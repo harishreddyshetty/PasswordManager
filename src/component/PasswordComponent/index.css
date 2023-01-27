@@ -1,0 +1,85 @@
+* {
+  font-family: 'Roboto';
+}
+
+.password-list-element {
+  display: flex;
+  align-items: center;
+  border: 1px solid #b6c3ca;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  .password-list-element {
+    width: 220px;
+    height: 90px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+.website-icon {
+  background-color: lightgreen;
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+  padding-top: 5px;
+  margin-left: 10px;
+}
+.user-password-details-container {
+  margin-left: 20px;
+  color: white;
+}
+.website-name {
+  font-weight: 500;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.username {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 3px;
+  padding-top: 5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.password {
+  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 15px;
+}
+.delete-btn {
+  background-color: transparent;
+  border: 0px none;
+  margin-left: auto;
+}
+.delete-img {
+  height: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .username {
+    font-size: 12px;
+  }
+  .delete-img {
+    height: 22px;
+  }
+  .website-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  .website-name {
+    font-size: 15px;
+  }
+}
+
+.stars {
+  height: 12px;
+}
