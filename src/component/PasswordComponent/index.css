@@ -2,6 +2,23 @@
   font-family: 'Roboto';
 }
 
+.vividOrange {
+  background-color: #f59e0b;
+}
+
+.green-cyan {
+  background-color: #10b981;
+}
+.orange {
+  background-color: #f97316;
+}
+.green {
+  background-color: #14b8a6;
+}
+.strong-red {
+  background-color: #b91c1c;
+}
+
 .password-list-element {
   display: flex;
   align-items: center;
@@ -20,17 +37,19 @@
     margin-bottom: 10px;
   }
 }
+
+.website-initial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  width: 35px;
+  height: 35px;
+}
 .website-icon {
-  background-color: lightgreen;
-  font-size: 25px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  text-align: center;
+  font-size: 15px;
   color: white;
-  font-weight: 500;
-  padding-top: 5px;
-  margin-left: 10px;
+  text-align: center;
 }
 .user-password-details-container {
   margin-left: 20px;
@@ -71,9 +90,8 @@
     height: 22px;
   }
   .website-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
   }
   .website-name {
     font-size: 15px;

@@ -4,6 +4,14 @@ import PasswordComponent from '../PasswordComponent/index'
 
 import './index.css'
 
+const initialContainerBackgroundClassNames = [
+  'vividOrange',
+  'green-cyan',
+  'orange',
+  'green',
+  'strong-red',
+]
+
 class PasswordManager extends Component {
   state = {
     websiteName: '',
@@ -11,6 +19,7 @@ class PasswordManager extends Component {
     password: '',
     passwordItemsList: [],
     showPassword: false,
+    searchText: '',
   }
 
   toggleShowPassword = () => {
@@ -32,12 +41,19 @@ class PasswordManager extends Component {
   createPasswordItem = event => {
     event.preventDefault()
     const {websiteName, userName, password} = this.state
-    console.log(websiteName, userName, password)
+    const initialBackgroundColorClassName = `${
+      initialContainerBackgroundClassNames[
+        Math.ceil(
+          Math.random() * initialContainerBackgroundClassNames.length - 1,
+        )
+      ]
+    }`
     const passwordObj = {
       id: uuidv4(),
       websiteName,
       userName,
       password,
+      initialClassName: initialBackgroundColorClassName,
     }
     this.setState(prevState => ({
       passwordItemsList: [...prevState.passwordItemsList, passwordObj],
@@ -55,22 +71,9 @@ class PasswordManager extends Component {
     this.setState({passwordItemsList: filteredPasswordList})
   }
 
-  //   filterPasswordList = event => {
-  //     const {passwordItemsList} = this.state
-  //     let filteredData
-  //     const searchValue = event.target.value
-  //     if (searchValue === '') {
-  //       filteredData = passwordItemsList.filter(eachItem =>
-  //         eachItem.websiteName.includes(''),
-  //       )
-  //       this.setState({passwordItemsList: filteredData})
-  //     } else {
-  //       filteredData = passwordItemsList.filter(eachItem =>
-  //         eachItem.websiteName.includes(event.target.value),
-  //       )
-  //       this.setState({passwordItemsList: filteredData})
-  //     }
-  //   }
+  saveSearch = event => {
+    this.setState({searchText: event.target.value})
+  }
 
   render() {
     const {
@@ -79,7 +82,12 @@ class PasswordManager extends Component {
       userName,
       password,
       showPassword,
+      searchText,
     } = this.state
+
+    const filteredPasswords = passwordItemsList.filter(eachItem =>
+      eachItem.websiteName.toLowerCase().includes(searchText.toLowerCase()),
+    )
 
     const NoPasswordSection = (
       <div className="no-passwords-section">
@@ -93,7 +101,7 @@ class PasswordManager extends Component {
     )
     const passwordItem = (
       <ul className="password-details-list">
-        {passwordItemsList.map(eachItem => (
+        {filteredPasswords.map(eachItem => (
           <PasswordComponent
             key={eachItem.id}
             passwordItemsList={eachItem}
@@ -185,7 +193,7 @@ class PasswordManager extends Component {
                 src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
               />
               <input
-                onChange={this.filterPasswordList}
+                onChange={this.saveSearch}
                 className="search-input-element"
                 type="search"
                 placeholder="Search"
@@ -204,7 +212,7 @@ class PasswordManager extends Component {
               Show Passwords
             </label>
           </div>
-          {passwordItemsList.length > 0 ? passwordItem : NoPasswordSection}
+          {filteredPasswords.length > 0 ? passwordItem : NoPasswordSection}
         </div>
       </div>
     )
